@@ -51,6 +51,7 @@ Download the integration files to your Wazuh manager:
 ```bash
 # Create a temporary directory
 cd /tmp
+# Download scripts
 wget https://raw.githubusercontent.com/jayzielinski/wazuh-teams-workflows/main/custom-teams
 wget https://raw.githubusercontent.com/jayzielinski/wazuh-teams-workflows/main/custom-teams.py
 
@@ -120,21 +121,21 @@ sudo systemctl restart wazuh-manager
    - Open Microsoft Teams
    - Go to the channel where you want to receive alerts
    - Click the three dots (**...**) next to the channel name
-![Change dashboard URL](docs/screenshots/teams1.png)
+![Teams Step 1](docs/screenshots/teams1.png)
 2. **Add Workflow**
    - Select **"Workflows"** from the dropdown menu
-     ![Change dashboard URL](docs/screenshots/teams2.png)
+     ![Teams Step 2](docs/screenshots/teams2.png)
    - Click **"Send webhook alerts to a channel"**
      
-     ![Change dashboard URL](docs/screenshots/teams3.png)
+     ![Teams Step 3](docs/screenshots/teams3.png)
 3. **Wait until the connection status changes to “Valid connection” and change the “Name” of the workflow. Click Next.**
-   ![Change dashboard URL](docs/screenshots/teams4.png)
+   ![Teams Step 4](docs/screenshots/teams4.png)
  
 4. **Configure Workflow**
    - **Team**: Select your team
    - **Channel**: Select your channel
    **Click "Add workflow"**
-	 ![Change dashboard URL](docs/screenshots/teams5.png)
+	 ![Teams Step 5](docs/screenshots/teams5.png)
 
 
 5. **Copy Webhook URL**
@@ -143,7 +144,7 @@ sudo systemctl restart wazuh-manager
    - **Important**: Save this URL securely as you'll need it for Wazuh configuration
    - Click "Done"
      
-![Change dashboard URL](docs/screenshots/teams6.png)
+![Teams Step 6](docs/screenshots/teams6.png)
 ## Wazuh Configuration
 
 ### Step 1: Configure ossec.conf
@@ -203,7 +204,7 @@ This way, Teams will get both all alerts from level 10 up, and these particular 
   <alert_format>json</alert_format>
 </integration>
 ```
-![Change dashboard URL](docs/screenshots/ossec_conf.png)
+![Change ossec.conf file](docs/screenshots/ossec_conf.png)
 ### Step 2: Save & Restart Wazuh Manager
 ```bash
 sudo systemctl restart wazuh-manager
@@ -213,7 +214,7 @@ sudo systemctl restart wazuh-manager
 
 ### Generate Alerts for Linux rule 5902
 >In my case, I prepared two agents to perform the tests. One VM with Windows 11 Pro and the other VM with Ubuntu Server 24.04 LTS.
-![Change dashboard URL](docs/screenshots/agents.png)
+![Agents for testing integration](docs/screenshots/agents.png)
 >
 Create a test user on Linux Endpoint to trigger rule 5902:
 
@@ -231,26 +232,26 @@ Expected log output:
 ```
 2025-07-28 19:30:00 INFO Sent ok (status 202)
 ```
-![Change dashboard URL](docs/screenshots/rule5902.png)
+![Rule 5902 Alert Generation](docs/screenshots/rule5902.png)
 Check alert in Microsoft Teams Channel:
-![Change dashboard URL](docs/screenshots/alert_rule_5902.png)
+![Rule 5092 Alert Teams Output](docs/screenshots/alert_rule_5902.png)
 ### Generate Alerts for Linux rule 5710
-![Change dashboard URL](docs/screenshots/rule5710.png)
-![Change dashboard URL](docs/screenshots/alert_rule_5710.png)
+![Rule 5710 Alert Generation](docs/screenshots/rule5710.png)
+![Rule 5710 Alert Teams Output](docs/screenshots/alert_rule_5710.png)
 
 
 
 ### Generate Alerts for Windows rule 60109
-![Change dashboard URL](docs/screenshots/rule60109.png)
-![Change dashboard URL](docs/screenshots/alert_rule_60109.png)
+![Rule 60109 Alert Generation](docs/screenshots/rule60109.png)
+![Rule 60109 Alert Teams Output](docs/screenshots/alert_rule_60109.png)
 
 ### Generate Alerts for Windows rule 60204
 We will perform a test RDP bruteforce attack as shown in the screenshot below:
-![Change dashboard URL](docs/screenshots/rule60204.png)
+![Rule 60204 Alert Generation](docs/screenshots/rule60204.png)
 
 When you click the "Dashboard" button in Teams, you will be redirected to the "Threat Hunting Events" section in Wazuh, automatically filtered to show events for the agent related to the alert.
 
-
+![Rule 60204 Teams Output & Click](docs/screenshots/rule_60204.gif)
 
 
 
