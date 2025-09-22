@@ -8,7 +8,7 @@
 > - **New Incoming Webhook/Connector creation is blocked from August 15, 2024**.
 > - **Existing connectors will require an URL update before December 31, 2024** to keep working.
 > - **All Office 365 connectors/incoming webhook integrations will stop working entirely after December 31, 2025** (see [Microsoft's announcement][office365-retirement]).
-> - **All PowerAutomate Flows URL must be changed to the new endpoints (new URL visable in PowerAutomate), the old endpoints will stop working after November 30, 2025** (see [Microsoft's announcement][https://learn.microsoft.com/en-us/troubleshoot/power-platform/power-automate/flow-run-issues/triggers-troubleshoot?tabs=new-designer#changes-to-http-or-teams-webhook-trigger-flows])
+> - **All PowerAutomate Flows URL must be changed to the new endpoints (new URL visable in PowerAutomate), the old endpoints will stop working after November 30, 2025** (see [Microsoft's announcement](https://learn.microsoft.com/en-us/troubleshoot/power-platform/power-automate/flow-run-issues/triggers-troubleshoot?tabs=new-designer#changes-to-http-or-teams-webhook-trigger-flows))
 >
 > **This integration exists because Power Automate Workflows are now the Microsoft-recommended way to post alerts to Teams.**
 >
@@ -37,7 +37,7 @@ Each Teams notification includes:
 ### System Requirements
 - **Wazuh Manager**: Version 4.0 or higher
 - **Python**: Version 3.8 or higher (usually included with Wazuh)
-- **Network**: HTTPS access to `logic.azure.com` (Power Automate)
+- **Network**: HTTPS access to `api.powerplatform.com` (Power Automate)
 
 ### Microsoft Teams Requirements
 - Microsoft Teams workspace with channel creation permissions
