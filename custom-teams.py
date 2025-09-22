@@ -35,7 +35,7 @@ class Integration:
         if not self.alert_file.endswith('.alert'):
             self.logger.error(f"Invalid alert file: {self.alert_file}")
             return False
-        if 'logic.azure.com' not in self.webhook_url:
+        if not any(domain in self.webhook_url for domain in ('logic.azure.com', 'api.powerplatform.com')):
             self.logger.error(f"Invalid webhook URL: {self.webhook_url}")
             return False
         if not isinstance(self.level, int):
