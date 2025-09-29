@@ -8,6 +8,7 @@
 > - **New Incoming Webhook/Connector creation is blocked from August 15, 2024**.
 > - **Existing connectors will require an URL update before December 31, 2024** to keep working.
 > - **All Office 365 connectors/incoming webhook integrations will stop working entirely after December 31, 2025** (see [Microsoft's announcement][office365-retirement]).
+> - **All PowerAutomate Flows URL must be changed to the new endpoints (new URL visable in PowerAutomate), the old endpoints will stop working after November 30, 2025** (see [Microsoft's announcement](https://learn.microsoft.com/en-us/troubleshoot/power-platform/power-automate/flow-run-issues/triggers-troubleshoot?tabs=new-designer#changes-to-http-or-teams-webhook-trigger-flows))
 >
 > **This integration exists because Power Automate Workflows are now the Microsoft-recommended way to post alerts to Teams.**
 >
@@ -36,7 +37,7 @@ Each Teams notification includes:
 ### System Requirements
 - **Wazuh Manager**: Version 4.0 or higher
 - **Python**: Version 3.8 or higher (usually included with Wazuh)
-- **Network**: HTTPS access to `logic.azure.com` (Power Automate)
+- **Network**: HTTPS access to `api.powerplatform.com` (Power Automate)
 
 ### Microsoft Teams Requirements
 - Microsoft Teams workspace with channel creation permissions
@@ -140,7 +141,7 @@ sudo systemctl restart wazuh-manager
 
 5. **Copy Webhook URL**
    - After creation, copy the generated webhook URL
-   - It should look like: `https://prod-XX.northeurope.logic.azure.com:443/workflows/...`
+   - It should look like: `https://XXX.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/XXXX`
    - **Important**: Save this URL securely as you'll need it for Wazuh configuration
    - Click "Done"
      
@@ -253,13 +254,22 @@ When you click the "Dashboard" button in Teams, you will be redirected to the "T
 
 ![Rule 60204 Teams Output & Click](docs/screenshots/rule_60204.gif)
 
+<br>
 
+### New interactive Adaptive Card Desgin
+New / alternativ Design with a short Info in the Card.
+- Header color by rule level
+- Timestamp
+- Level, Rule ID, Agent
+- Description
+- Full log (Decodername as Info)
 
+<img src="docs/screenshots/teams-dynamic-adative-card.png" width="500">
 
+When the Button "See all data" is ticked, it shows dynamicly all data.* and ruel.* Datafields:
+<img src="docs/screenshots/teams-dynamic-adative-card1.png" width="500">
 
-
-
-
+<br>
 
 ## Support
 
